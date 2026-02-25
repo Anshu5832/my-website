@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top 100 Inventors - Voice App</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+  margin: 0;
+  padding: 20px;
+}h1 { text-align: center; margin-bottom: 20px; }
+
+.container { max-width: 800px; margin: auto; }
+
+.card { background: rgba(255,255,255,0.05); border-radius: 12px; padding: 15px; margin: 10px 0; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+
+button { font-size: 20px; background: #22c55e; border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; }
+
+button:hover { background: #16a34a; }
+
+.name { font-weight: bold; }
+
+.desc { font-size: 14px; opacity: 0.8; } </style>
+
+</head>
+<body><h1>🎤 Top 100 Inventors Voice Explorer</h1>
+<div class="container" id="inventorList"></div><script>
+const inventors = [
+  {name:"Sir Isaac Newton", desc:"Discovered gravity and laws of motion"},
+  {name:"Albert Einstein", desc:"Created theory of relativity"},
+  {name:"Nikola Tesla", desc:"Invented AC electricity system"},
+  {name:"Thomas Alva Edison", desc:"Invented practical electric bulb"},
+  {name:"Alexander Graham Bell", desc:"Invented telephone"},
+  {name:"Martin Edward Cooper", desc:"Invented mobile phone"},
+  {name:"Charles Babbage", desc:"Invented computer concept"},
+  {name:"Alan Turing", desc:"Father of modern computing"},
+  {name:"Tim Berners-Lee", desc:"Invented World Wide Web"},
+  {name:"Johannes Gutenberg", desc:"Invented printing press"},
+  {name:"Michael Faraday", desc:"Discovered electromagnetic induction"},
+  {name:"James Watt", desc:"Improved steam engine"},
+  {name:"Karl Benz", desc:"Invented first practical car"},
+  {name:"Wright Brothers", desc:"Invented airplane"},
+  {name:"Guglielmo Marconi", desc:"Invented radio"},
+  {name:"John Logie Baird", desc:"Invented television"},
+  {name:"Alessandro Volta", desc:"Invented battery"},
+  {name:"Benjamin Franklin", desc:"Electricity experiments"},
+  {name:"Dennis Ritchie", desc:"Created C programming language"},
+  {name:"Bill Gates", desc:"Created Microsoft"},
+  {name:"Steve Jobs", desc:"Co-created Apple"},
+  {name:"Steve Wozniak", desc:"Built Apple computer"},
+  {name:"Vint Cerf", desc:"Co-invented Internet"},
+  {name:"Ray Tomlinson", desc:"Invented email"},
+  {name:"Larry Page", desc:"Created Google"},
+  {name:"Sergey Brin", desc:"Created Google"},
+  {name:"Mark Zuckerberg", desc:"Created Facebook"},
+  {name:"Jack Kilby", desc:"Invented microchip"},
+  {name:"Gordon Moore", desc:"Microchip advancement"},
+  {name:"Marie Curie", desc:"Discovered radioactivity"},
+  {name:"Louis Pasteur", desc:"Invented vaccines"},
+  {name:"Alexander Fleming", desc:"Discovered penicillin"},
+  {name:"Charles Darwin", desc:"Theory of evolution"},
+  {name:"Gregor Mendel", desc:"Father of genetics"},
+  {name:"Rosalind Franklin", desc:"DNA structure discovery"},
+  {name:"James Watson", desc:"DNA double helix"},
+  {name:"Francis Crick", desc:"DNA structure"},
+  {name:"Neil Armstrong", desc:"First human on Moon"},
+  {name:"Yuri Gagarin", desc:"First human in space"},
+  {name:"John Bardeen", desc:"Invented transistor"},
+  {name:"Claude Shannon", desc:"Information theory"},
+  {name:"Grace Hopper", desc:"Programming pioneer"},
+  {name:"Linus Torvalds", desc:"Created Linux"},
+  {name:"Guido van Rossum", desc:"Created Python"},
+  {name:"Brendan Eich", desc:"Created JavaScript"},
+  {name:"Ada Lovelace", desc:"First programmer"},
+  {name:"Leonardo da Vinci", desc:"Engineering visionary"},
+  {name:"Archimedes", desc:"Engineering pioneer"},
+  {name:"Pythagoras", desc:"Mathematics foundation"},
+  {name:"Euclid", desc:"Geometry founder"}
+];
+
+function speak(text) {
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.rate = 0.9;
+  speechSynthesis.speak(utterance);
+}
+
+const list = document.getElementById("inventorList");
+
+inventors.forEach(inv => {
+  const card = document.createElement("div");
+  card.className = "card";
+
+  const textDiv = document.createElement("div");
+  textDiv.innerHTML = `<div class='name'>${inv.name}</div><div class='desc'>${inv.desc}</div>`;
+
+  const btn = document.createElement("button");
+  btn.innerHTML = "🎤";
+  btn.onclick = () => speak(inv.name + ". " + inv.desc);
+
+  card.appendChild(textDiv);
+  card.appendChild(btn);
+  list.appendChild(card);
+});
+</script></body>
+</html>
